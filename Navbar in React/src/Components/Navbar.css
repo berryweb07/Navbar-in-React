@@ -1,0 +1,159 @@
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sticky & Glassmorphism Header */
+.navbar-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.85); /* Dark modern theme */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+/* Navigation Links (Desktop) */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+/* Hover Effect for Links */
+.nav-menu a:hover {
+  color: #38bdf8;
+}
+
+/* Active Link Style (React Router automatically adds .active class) */
+.nav-menu a.active {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.nav-menu a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #38bdf8;
+  border-radius: 2px;
+}
+
+/* Hamburger Button (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Main Content Wrapper */
+.content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===================================================
+   Responsive Design (Mobile Screens - max 768px)
+=================================================== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hamburger to 'X' Animation */
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+  }
+
+  /* Mobile Slide-down Menu */
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #0f172a;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-menu.active {
+    max-height: 300px; /* Menu open height */
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 1.2rem 0;
+    width: 100%;
+  }
+
+  .nav-menu a.active::after {
+    display: none; /* Mobile par underline hide kar di */
+  }
+}
